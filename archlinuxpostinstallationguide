@@ -1,0 +1,54 @@
+Arch Linux Post-Installation Guide
+
+Install AUR Helper
+git clone https://aur.archlinux.org/yay.git
+cd yay/
+makepkg -si
+
+Packages
+gnome instaloader google-chrome kvantum gthumb lollypop stacer-bin appimagelauncher alacritty alacritty-themes gparted btop eza inxi mesa-utils fastfetch ttf-ms-fonts mpv qbittorrent mesa-vdpau yt-dlp 
+ttf-ubuntu-font-family less zsync ani-cli dosfstools mtools ntfs-3g ffmpegthumbnailer gst-plugins-espeak gst-plugins-ugly snapd gst-libav gstreamer-vaapi mesa-vdpau cups epson-inkjet-printer-escpr
+apparmor
+
+Setup Snap
+sudo systemctl enable apparmor.service
+sudo systemctl enable snapd.apparmor.service
+sudo systemctl eanble snapd.socket
+
+Enable Printer Support
+sudo systemctl enable cups.service
+
+AM-Application Manager (AppImages Support)
+wget https://raw.githubusercontent.com/ivan-hc/AM-application-manager/main/INSTALL && chmod a+x ./INSTALL && sudo ./INSTALL
+
+
+Flatpak Applications
+flatpak install org.mozilla.firefox  
+flatpak install org.freedesktop.Platform.ffmpeg-full 
+flatpak install io.github.peazip.PeaZip 
+flatpak install com.mattjakeman.ExtensionManager
+flatpak install com.github.unrud.VideoDownloader
+flatpak install com.github.tchx84.Flatseal 
+flatpak install com.spotify.Client
+
+
+Orchis Gtk Theme & Papirus Icon Theme Setup
+
+Orchis-Gtk-Theme
+git clone https://github.com/vinceliuice/Orchis-theme.git
+cd /Orchis-theme
+./install.sh -l -c dark
+
+Orchis-Kde-Theme
+git clone https://github.com/vinceliuice/Orchis-kde.git
+cd /Orchis-kde
+./install.sh
+
+
+Papirus Icon Theme 
+wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.icons" sh
+
+
+Flatpak permissions 
+sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --filesystem=$HOME/.icons
